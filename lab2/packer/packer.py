@@ -25,26 +25,22 @@ def unpack(obj):
 
 def pack_collection(obj):
     res = {}
-
     if isinstance(obj, (list, set, tuple)):
         res = []
         [res.append(pack(v)) for v in obj]
     else:
         for k, v in obj.items():
             res[k] = pack(v)
-    
     return res
 
 def unpack_collection(obj):
     res = {}
-    
     if isinstance(obj, dict):
         for k, v in obj.items():
             res[k] = unpack(v)
         return res
     else:
         res = [unpack(v) for v in obj]
-    
     return res
     
 def pack_func(obj):
@@ -63,7 +59,6 @@ def pack_func(obj):
     for k in res['co_names']:
         if k in obj.__globals__.keys():
             res['__globals__'][k] = obj.__globals__.__getitem__(k)
-    
     return res
 
 def unpack_func(obj):
@@ -94,15 +89,12 @@ def pack_class_obj(obj):
     for k, v in inspect.getmembers(obj):
         if not '__'in k:
             res[k] = pack(v)
-    
     return res
 
 def unpack_class_obj(obj):
     res = type(obj['__class__'], (), {})()
-    
     for k, v in obj.items():
         if '__' in k:
             continue
         setattr(res, k, unpack(v))
-    
     return res
