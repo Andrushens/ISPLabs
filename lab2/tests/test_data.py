@@ -17,8 +17,7 @@ class Pudge:
 
 def cmplx_func(a):
     b = 4
-    d = simple_func(4)
-    return d*int_glob*b**a
+    return simple_func(4)*int_glob*b**a
 
 def simple_func(a):
     return a*a
@@ -28,3 +27,4 @@ simple_lambda = lambda q: q*q
 int_glob = 4
 
 list_1 = [1, '2', 3.3]
+dict_1 = {1:1, None: None, False: False}
