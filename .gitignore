@@ -1,0 +1,7 @@
+.coverage
+build
+dist
+*.egg-info
+test.*
+*cache*
+tasks
