@@ -1,7 +1,7 @@
 import inspect
 from types import FunctionType, LambdaType, MethodType, CodeType
 import builtins
-from packer.packer import pack, unpack, unpack_func
+from packer.packer import pack, unpack
 
 
 class JsonSerializer:
