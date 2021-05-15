@@ -1,5 +1,5 @@
 import unittest
-from serializer_factory.serizalizer_factory import SerializerFactory
+from serializer_factory.serializer_factory import SerializerFactory
 import test_data
 
 
@@ -17,6 +17,12 @@ class SerializeTester(unittest.TestCase):
         new_obj = self.s.loads(self.s.dumps(old_obj))
         self.assertEqual(old_obj, new_obj)
 
+    def test_json_dict(self):
+        self.s = SerializerFactory().create_serializer('json')
+        old_obj = test_data.dict_1
+        new_obj = self.s.loads(self.s.dumps(old_obj))
+        self.assertEqual(old_obj[None], new_obj['None'])
+
     def test_json_lambda(self):
         self.s = SerializerFactory().create_serializer('json')
         old_obj = test_data.simple_lambda
@@ -32,19 +38,22 @@ class SerializeTester(unittest.TestCase):
 
     def test_json_simple_class_obj(self):
         self.s = SerializerFactory().create_serializer('json')
-        old_obj = test_data.Techies()
+        old_obj = test_data.SimpleClass()
         new_obj = self.s.loads(self.s.dumps(old_obj))
         self.assertEqual(old_obj.suicide(), new_obj.suicide(0))
         self.assertEqual(old_obj.name, new_obj.name)
 
     def test_json_cmplx_class_obj(self):
         self.s = SerializerFactory().create_serializer('json')
-        old_obj = test_data.Pudge()
+        old_obj = test_data.ComplexClass()
         new_obj = self.s.loads(self.s.dumps(old_obj))
         self.assertEqual(old_obj.teammate.name, new_obj.teammate.name)
         self.assertEqual(old_obj.kill(), new_obj.kill(self))
-        self.assertEqual(old_obj.test_list[2](), old_obj.test_list[2]())
-        
+        self.assertEqual(old_obj.const, new_obj.const)
+        self.assertEqual(old_obj.teammate.suicide(), new_obj.teammate.suicide(self))
+        self.assertEqual(old_obj.tuple[1](), new_obj.tuple[1](self))
+        self.assertEqual(old_obj.tuple[0].name, new_obj.tuple[0].name)
+
 #---------YAML---------
     def test_yaml_primitive(self):
         self.s = SerializerFactory().create_serializer('yaml')
@@ -79,7 +88,7 @@ class SerializeTester(unittest.TestCase):
 
     def test_yaml_simple_class_obj(self):
         self.s = SerializerFactory().create_serializer('yaml')
-        old_obj = test_data.Techies()
+        old_obj = test_data.SimpleClass()
         new_obj = self.s.loads(self.s.dumps(old_obj))
         self.assertEqual(old_obj.suicide(), new_obj.suicide(0))
         self.assertEqual(old_obj.name, new_obj.name)
@@ -92,11 +101,14 @@ class SerializeTester(unittest.TestCase):
 
     def test_yaml_cmplx_class_obj(self):
         self.s = SerializerFactory().create_serializer('yaml')
-        old_obj = test_data.Pudge()
+        old_obj = test_data.ComplexClass()
         new_obj = self.s.loads(self.s.dumps(old_obj))
         self.assertEqual(old_obj.teammate.name, new_obj.teammate.name)
         self.assertEqual(old_obj.kill(), new_obj.kill(self))
-        self.assertEqual(old_obj.test_list[2](), old_obj.test_list[2]())
+        self.assertEqual(old_obj.const, new_obj.const)
+        self.assertEqual(old_obj.teammate.suicide(), new_obj.teammate.suicide(self))
+        self.assertEqual(old_obj.tuple[1](), new_obj.tuple[1](self))
+        self.assertEqual(old_obj.tuple[0].name, new_obj.tuple[0].name)
     
 #---------TOML---------
     def test_toml_lambda(self):
@@ -114,7 +126,7 @@ class SerializeTester(unittest.TestCase):
 
     def test_toml_simple_class_obj(self):
         self.s = SerializerFactory().create_serializer('toml')
-        old_obj = test_data.Techies()
+        old_obj = test_data.SimpleClass()
         new_obj = self.s.loads(self.s.dumps(old_obj))
         self.assertEqual(old_obj.suicide(), new_obj.suicide(0))
         self.assertEqual(old_obj.name, new_obj.name)
@@ -159,15 +171,18 @@ class SerializeTester(unittest.TestCase):
 
     def test_pickle_simple_class_obj(self):
         self.s = SerializerFactory().create_serializer('pickle')
-        old_obj = test_data.Techies()
+        old_obj = test_data.SimpleClass()
         new_obj = self.s.loads(self.s.dumps(old_obj))
         self.assertEqual(old_obj.suicide(), new_obj.suicide(0))
         self.assertEqual(old_obj.name, new_obj.name)
 
     def test_pickle_cmplx_class_obj(self):
         self.s = SerializerFactory().create_serializer('pickle')
-        old_obj = test_data.Pudge()
+        old_obj = test_data.ComplexClass()
         new_obj = self.s.loads(self.s.dumps(old_obj))
         self.assertEqual(old_obj.teammate.name, new_obj.teammate.name)
         self.assertEqual(old_obj.kill(), new_obj.kill(self))
-        self.assertEqual(old_obj.test_list[2](), old_obj.test_list[2]())
+        self.assertEqual(old_obj.const, new_obj.const)
+        self.assertEqual(old_obj.teammate.suicide(), new_obj.teammate.suicide(self))
+        self.assertEqual(old_obj.tuple[1](), new_obj.tuple[1](self))
+        self.assertEqual(old_obj.tuple[0].name, new_obj.tuple[0].name)

@@ -46,7 +46,6 @@ def unpack_collection(obj):
 def pack_func(obj):
     res = {'__func__': obj.__name__}
     res['__globals__'] = {}
-
     for k in obj.__code__.__dir__():
         if k.startswith('co_'):
             v = getattr(obj.__code__, k)
@@ -79,7 +78,6 @@ def unpack_func(obj):
                         bytes(obj['co_lnotab']),
                         tuple(obj['co_freevars']),
                         tuple(obj['co_cellvars']))
-    
     return FunctionType(code, obj['__globals__'], obj['co_name'])
 
 def pack_class_obj(obj):
