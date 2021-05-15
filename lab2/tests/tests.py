@@ -36,6 +36,15 @@ class SerializeTester(unittest.TestCase):
         new_obj = self.s.loads(self.s.dumps(old_obj))
         self.assertEqual(old_obj(4), new_obj(4))
 
+    def test_json_cmplx_func(self):
+        self.s = SerializerFactory().create_serializer('json')
+        old_obj = test_data.cmplx_func
+        old_obj_2 = test_data.simple_lambda
+        new_obj = self.s.loads(self.s.dumps(old_obj))
+        new_obj_2 = self.s.loads(self.s.dumps(old_obj_2))
+        self.assertEqual(old_obj(4), new_obj(4))
+        self.assertEqual(old_obj_2(4), new_obj_2(4))
+
     def test_json_simple_class_obj(self):
         self.s = SerializerFactory().create_serializer('json')
         old_obj = test_data.SimpleClass()

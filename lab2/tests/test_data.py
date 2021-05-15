@@ -15,7 +15,7 @@ class ComplexClass:
         self.name = 'Cmplx class'
 
     def kill(self):
-        return "z x ty4ka pauza c"
+        return "z x ty4ka pauza c" + str_glob
 
 def cmplx_func(a):
     b = int_glob
@@ -26,5 +26,6 @@ def simple_func(a):
 
 simple_lambda = lambda q: q*q
 int_glob = 4
+str_glob = 'global'
 list_1 = [1, '2', 3.3]
 dict_1 = {1: 1, None: None, False: False}

@@ -1,6 +1,7 @@
 import inspect
 from types import FunctionType, LambdaType, MethodType, CodeType
 import builtins
+from packer.packer import pack, unpack, unpack_func
 
 
 class JsonSerializer:
@@ -9,7 +10,7 @@ class JsonSerializer:
         self.nums = [str(i) for i in range(10)]
 
     def dumps(self, obj):
-        return self.to_str(obj)
+        return self.to_str(pack(obj))
 
     def dump(self, obj, fp):
         with open(fp, 'w+') as f:
@@ -17,7 +18,7 @@ class JsonSerializer:
 
     def loads(self, s):
         self.pos = 0
-        return self.from_str(s)
+        return unpack(self.from_str(s))
 
     def load(self, fp):
         with open(fp, 'r') as f:
@@ -225,7 +226,7 @@ class JsonSerializer:
         self.pos += 1
 
         while self.pos < len(s) and s[self.pos] != '}':
-            if s[self.pos] == ' ' or s[self.pos] == ',':
+            while s[self.pos] in (' ', ','):
                 self.pos += 1
                 continue
             
