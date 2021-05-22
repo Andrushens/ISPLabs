@@ -1,0 +1,10 @@
+__init_.py_
+.coverage
+build
+dist
+*.egg-info
+test.*
+*venv*
+for_something.py
+__pycache__
+tasks
