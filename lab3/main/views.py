@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import View
+from multiprocessing import Process
 import logging
 
 from .forms import CreateReviewForm, SignupForm
@@ -28,8 +29,10 @@ def signup_page(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
+            p = Process(target=log.info, args=("{} just registered".format(form.cleaned_data['username']),))
+            p.start()
+            p.join()
             form.save()
-            log.info("{} just registered".format(form.cleaned_data['username']))
             return redirect('login')
 
     context = {'form': form}
@@ -46,8 +49,10 @@ def login_page(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
+            p = Process(target=log.info, args=("{} just logged in".format(username),))
+            p.start()
+            p.join()
             login(request, user)
-            log.info("{} just logged in".format(username))
             return redirect('home')
         
         messages.info(request, 'Incorrect login or password')
@@ -57,8 +62,10 @@ def login_page(request):
 
 
 def logout_page(request):
+    p = Process(target=log.info, args=("{} just logged out".format(request.user.username),))
+    p.start()
+    p.join()
     logout(request)
-    log.info("{} just logged out".format(request.user.username))
     return redirect('login')
 
 
@@ -70,7 +77,9 @@ def create_page(request):
             review = form.save(commit=False)
             review.author = request.user
             review.save()
-            log.info("{} just created review {}".format(request.user.username, review.title))
+            p = Process(target=log.info, args=("{} just created review {}".format(request.user.username, review.title),))
+            p.start()
+            p.join()
             return redirect('home')
     form = CreateReviewForm()
     context = {'form': form}
