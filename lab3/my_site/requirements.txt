@@ -1,0 +1,10 @@
+Django
+psycopg2
+PyYaml
+pytest-django
+Coverage
+pytest
+mixer
+pytest-cov
+pytest-xdist
+gunicorn

@@ -4,8 +4,7 @@ build
 dist
 *.egg-info
 test.*
-*venv*
+*env/*
 for_something.py
 __pycache__
 tasks
-*db*
