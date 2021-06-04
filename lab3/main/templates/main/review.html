@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    Post
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center h-100" style="margin-top: 100px; font-size: 28px; text-align: center;">
+    <div class="user_card">
+        <div class="d-flex justify-content-center">
+            <h3 id="form-title">Review on {{ review.title }}</h3>
+        </div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <p>Author: {{ review.author }}, created on {{ review.create_date }}</p>
+            <p style="font-size: 40px;">{{ review.text }}</p>
+            {% if request.user.username != review.author.username or request.user.username == "admin" %}
+                <div style="padding-left: 35%; padding-right: 35%;">
+                    <a href="{% url 'login' %}" class="ml-2" onclick="review.fans.add(request.user)" style="color: rgb(233, 77, 108);">Like review</a>
+                </div>
+            {% endif %}
+            <br>
+        </form>
+    </div>
+</div>
+{% endblock %}

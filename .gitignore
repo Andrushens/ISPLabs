@@ -8,4 +8,4 @@ test.*
 for_something.py
 __pycache__
 tasks
-db*
+*db*

@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block header-right %}
+    <span>Hello, {{request.user}}! </span>
+    <span><a href="{% url 'logout' %}">Logout</a></span>
+{% endblock %}
+
+{% block content %}
+    <div style="margin-top: 100px; font-size: 28px; text-align: center;">
+        {% for review in reviews %}
+            <p><a href="/{{review.author.id}}/">{{review.author}}</a> added review: <a href="/{{ review.slug }}/">{{review.title}}</a></p>
+        {% endfor %}
+        <br>
+
+        <a href="{% url 'create' %}">Add review</a>
+    </div>
+{% endblock %}
