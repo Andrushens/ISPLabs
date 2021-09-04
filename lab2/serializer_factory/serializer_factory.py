@@ -1,7 +1,7 @@
-from toml_serializer.toml_serializer import TomlSerializer
-from json_serializer.json_serializer import JsonSerializer
-from yaml_serializer.yaml_serializer import YamlSerializer
-from pickle_serializer.pickle_serializer import PickleSerializer
+from serializer.parsers.toml import TomlSerializer
+from serializer.parsers.json import JsonSerializer
+from serializer.parsers.yaml import YamlSerializer
+from serializer.parsers.pickle import PickleSerializer
 
 
 class SerializerFactory:

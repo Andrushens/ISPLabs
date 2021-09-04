@@ -1,4 +1,4 @@
-from serializer_factory.serializer_factory import SerializerFactory
+from serializer_factory import SerializerFactory
 import argparse
 
 
