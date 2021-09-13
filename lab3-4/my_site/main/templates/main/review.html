@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-    Post
+    Review
 {% endblock %}
 
 {% block content %}
@@ -12,14 +12,30 @@
         </div>
         <form method="POST" action="">
             {% csrf_token %}
-            <p>Author: {{ review.author }}, created on {{ review.create_date }}</p>
+            <p>Author: <a href="/users/{{ review.author.user.id }}">{{ review.author }}</a>, created on {{ review.create_date }}</p>
+            <p>Total likes: {{ review.fans.count }}</p>
             <p style="font-size: 40px;">{{ review.text }}</p>
-            {% if request.user.username != review.author.username or request.user.username == "admin" %}
+            {% if request.user.is_authenticated %}
+                {% if request.user.username != review.author.user.username %}
                 <div style="padding-left: 35%; padding-right: 35%;">
-                    <a href="{% url 'login' %}" class="ml-2" onclick="review.fans.add(request.user)" style="color: rgb(233, 77, 108);">Like review</a>
-                </div>
+                        {% if request.user in review.fans.all %}
+                            <a href="{% url 'like' review.slug %}" class="ml-2" style="color: rgb(233, 77, 108);">Unlike Review</a>
+                        {% else %}
+                            <a href="{% url 'like' review.slug %}" class="ml-2" style="color: rgb(233, 77, 108);">Like Review</a>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div>
+                        <a href="{% url 'update' review.slug %}" class="ml-2";">Update Review</a>
+                        <a href="{% url 'delete' review.slug %}" class="ml-2";">Delete Review</a>
+                    </div>
+                {% endif %}
             {% endif %}
             <br>
+            <p>Fans List:</p>
+            {% for fan in review.fans.all %}
+                <p>{{ fan.username }}</p>
+            {% endfor %}
         </form>
     </div>
 </div>

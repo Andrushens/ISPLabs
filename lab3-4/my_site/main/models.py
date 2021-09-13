@@ -1,27 +1,46 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.template.defaultfilters import default, slugify
+from django.template.defaultfilters import slugify
 from datetime import datetime
 
 
-class Genre(models.Model):
-    name = models.CharField(max_length=30, default='none')
-    
+class Account(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    reviews_created = models.IntegerField(default=0)
+
+    class Meta:
+        indexes= [
+            models.Index(fields=['user']),
+        ]
+        
+    def __str__(self):
+        return self.user.username
+
+    def save(self, *args, **kwargs):
+        super(Account, self).save(*args, **kwargs)
+
 
 class Review(models.Model):
 
-    genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
+    author = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='author')
     fans = models.ManyToManyField(User, related_name='fans')
+    likes = models.IntegerField(default=0)
     text = models.TextField(max_length=1000)
     title = models.CharField(max_length=25)
     create_date = models.DateTimeField(default=datetime.now)    
     slug = models.SlugField(max_length=25, unique=True)
 
+    class Meta:
+        ordering = ['-likes']
+        indexes= [
+            models.Index(fields=['slug']),
+            models.Index(fields=['author_id']),
+        ]
+        
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = slugify(self.title)
+        self.slug = slugify(self.title)
         super(Review, self).save(*args, **kwargs)

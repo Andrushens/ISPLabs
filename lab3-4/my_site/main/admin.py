@@ -5,4 +5,4 @@ from .models import *
 
 
 admin.site.register(Review)
-admin.site.register(Genre)
+admin.site.register(Account)

@@ -1,25 +1,25 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-    Create Review
+    Update Review
 {% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-center h-100" style="margin-top: 100px; font-size: 28px; text-align: center;">
     <div class="user_card">
         <div class="d-flex justify-content-center">
-            <h3 id="form-title">Create Review</h3>
+            <h3 id="form-title">Update Review</h3>
         </div>
         <form method="POST" action="">
             {% csrf_token %}
             <div class="input-group mb-3">
-                <input id="title" type="text" name="title" placeholder="title.." class="form-control">
+                <input type="text" name="title" class="form-control" value={{ review.title }}>
             </div>
             <div class="input-group mb-2">
-                <textarea name="text" cols="30" rows="10" placeholder="content.."></textarea>
+                <textarea name="text" id="" cols="30" rows="10">{{ review.text }}</textarea>
             </div>
             <div class="d-flex justify-content-center mt-3 login_container">
-                <button type="submit" class="btn btn-success">Add</button>
+                <button type="submit" class="btn btn-success">Update</button>
             </div>
         </form>
     </div>

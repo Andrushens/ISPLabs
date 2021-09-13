@@ -16,3 +16,30 @@ class CreateReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('title', 'text')
+
+    def is_valid(self):
+        valid = super().is_valid()
+
+        if not valid:
+            return valid
+
+        if '-' in self.cleaned_data['title']:
+            return False
+        return True
+
+
+class UpdateReviewForm(forms.ModelForm):
+
+    class Meta:
+        model = Review
+        fields = ('title', 'text')
+
+    def is_valid(self):
+        valid = super().is_valid()
+
+        if not valid:
+            return valid
+
+        if '-' in self.cleaned_data['title']:
+            return False
+        return True

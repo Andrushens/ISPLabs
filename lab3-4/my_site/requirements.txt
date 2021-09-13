@@ -1,2 +1,5 @@
 Django
-psycopg2
+psycopg2-binary
+pytest
+pytest-cov
+pytest-django

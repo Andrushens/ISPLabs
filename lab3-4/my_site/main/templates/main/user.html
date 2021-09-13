@@ -7,14 +7,13 @@
 {% block content %}
 <div class="d-flex justify-content-center h-100" style="margin-top: 100px; font-size: 28px; text-align: center;">
     <div class="user_card">
-        <div class="d-flex justify-content-center">
-            <h3 id="form-title">Author: {{ user.username }}</h3>
-        </div>
+        <h3 id="form-title">Author: {{ reviews.first.author.user.username }}</h3>
+        <h3 id="form-title">Created {{ reviews.first.author.reviews_created }} reviews</h3>
         <form method="POST" action="">
             {% csrf_token %}
             <p>Reviews:</p>
             {% for review in reviews %}
-                <p><a href="/{{ review.slug }}/">{{ review.title }}</a></p>
+                <p><a href="/reviews/{{ review.slug }}">{{ review.title }}</a></p>
             {% endfor %}
             <p style="font-size: 40px;">{{ review.text }}</p>
         </form>

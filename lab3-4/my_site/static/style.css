@@ -1,0 +1,21 @@
+
+.alert-msg{
+    position: absolute;
+    margin: auto;
+    right: 20px;
+    bottom: 20px;
+
+    max-width: 400px;
+    font-family: sans-serif;
+    text-align: center;
+}
+  
+table {
+    width: 100%;
+}
+
+th {
+    align-content: center;
+    vertical-align: top;
+    justify-content: space-between;
+}

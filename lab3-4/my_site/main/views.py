@@ -1,22 +1,29 @@
+from django.http.response import Http404
 from .models import *
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import View
+from .forms import CreateReviewForm, SignupForm, UpdateReviewForm
+
 from multiprocessing import Process
 import logging
+import configparser
 
-from .forms import CreateReviewForm, SignupForm
 
-
-logging.basicConfig(filename='logger.log', level=logging.INFO)
+config = configparser.ConfigParser()
+config.read('cnf.ini')
+logging.basicConfig(
+    level=config['LOGGING']['level'],
+    filename=config['LOGGING']['filename']
+)
 log = logging.getLogger(__name__)
 
-@login_required(login_url='login')
+
 def home_page(request):
-    reviews = Review.objects.all()
-    context = {'reviews': reviews}
+    reviews = Review.objects.select_related('author')
+    context = {'liked_reviews': reviews[:3], 'reviews': reviews}
     return render(request, 'main/index.html', context)
 
 
@@ -24,17 +31,16 @@ def signup_page(request):
     if request.user.is_authenticated:
         return redirect('home')
 
-    form = SignupForm()
-
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            p = Process(target=log.info, args=("{} just registered".format(form.cleaned_data['username']),))
+            p = Process(target=log.info, args=("{} registered".format(form.cleaned_data['username']),))
             p.start()
             p.join()
             form.save()
             return redirect('login')
 
+    form = SignupForm()
     context = {'form': form}
     return render(request, 'main/sign-up.html', context)
 
@@ -47,57 +53,130 @@ def login_page(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
-
         if user is not None:
-            p = Process(target=log.info, args=("{} just logged in".format(username),))
+            if (Account.objects.filter(user=user)).count() == 0:
+                Account.objects.create(user=user)
+            p = Process(target=log.info, args=("{} logged in".format(username),))
             p.start()
             p.join()
             login(request, user)
             return redirect('home')
-        
-        messages.info(request, 'Incorrect login or password')
-
-    context = {}
-    return render(request, 'main/login.html', context)
-
+        messages.error(request, 'Incorrect login or password')
+    return render(request, 'main/login.html', {})
 
 def logout_page(request):
-    p = Process(target=log.info, args=("{} just logged out".format(request.user.username),))
+    p = Process(target=log.info, args=("{} logged out".format(request.user.username),))
     p.start()
     p.join()
     logout(request)
     return redirect('login')
 
-
 @login_required(login_url='login')
 def create_page(request):
     if request.method == 'POST':
         form = CreateReviewForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and Review.objects.filter(title=request.POST['title']).count() == 0:
             review = form.save(commit=False)
-            review.author = request.user
+            review.author = Account.objects.filter(user_id=request.user.id).first()
+            review.author.reviews_created += 1
+            review.author.save()
             review.save()
-            p = Process(target=log.info, args=("{} just created review {}".format(request.user.username, review.title),))
+            p = Process(target=log.info, args=("{} created review {}".format(request.user.username, review.title),))
             p.start()
             p.join()
             return redirect('home')
+        if Review.objects.filter(title=request.POST['title']).count() == 1:
+            messages.error(request, 'Review {} already exists'.format(request.POST['title']))
+        else:   
+            messages.error(request, 'Incorrect Input')
+        p = Process(target=log.error, args=("{} caused error on creating review".format(request.user.username),))
+        p.start()
+        p.join()
+
     form = CreateReviewForm()
     context = {'form': form}
     return render(request, 'main/create.html', context)
+
+@login_required(login_url='login')
+def delete_page(request, slug):
+    if request.user != Review.objects.filter(slug=slug).first().author.user:
+        return redirect(request.path[:-7])
+    review = Review.objects.filter(slug=slug).get()
+    review.author.reviews_created -= 1
+    review.author.save()
+    review.delete()
+    p = Process(target=log.info, args=("{} deleted review {}".format(request.user.username, slug),))
+    p.start()
+    p.join()
+    return redirect('home')
+
+
+@login_required(login_url='login')
+def update_page(request, slug):
+    if request.user != Review.objects.filter(slug=slug).first().author.user:
+        return redirect(request.path[:-7])
+
+    review = Review.objects.filter(slug=slug).get()
+    if request.method == 'POST':
+        form = UpdateReviewForm(request.POST, instance=review)
+        if form.is_valid() and Review.objects.filter(title=request.POST['title']).count() == 0:
+            review = form.save(commit=False)
+            review.save()
+            p = Process(target=log.info, args=("{} edited review {}".format(request.user.username, review.title),))
+            p.start()
+            p.join()
+            return redirect('home')
+        if Review.objects.filter(title=request.POST['title']).count() == 1:
+            messages.error(request, 'Review {} already exists'.format(request.POST['title']))
+        else:   
+            messages.error(request, 'Incorrect Input')
+        p = Process(target=log.error, args=("{} caused error on updating review".format(request.user.username),))
+        p.start()
+        p.join()
+                    
+    context = {'review': review}
+    return render(request, 'main/update.html', context)
+
+
+@login_required(login_url='login')
+def like_review(request, slug):
+    if request.user == Review.objects.filter(slug=slug).first().author.user:
+        return redirect(request.path[:-5])
+
+    review = Review.objects.get(slug=slug)
+    if review.fans.filter(username=request.user.username).count() == 0:
+        review.fans.add(request.user)
+        review.likes += 1
+        p = Process(target=log.info, args=("{} liked review {}".format(request.user.username, slug),))
+    else:
+        review.fans.remove(request.user)
+        review.likes -= 1
+        p = Process(target=log.info, args=("{} disliked review {}".format(request.user.username, slug),))
+    review.save()
+    p.start()
+    p.join()
+
+    return redirect(request.path[:-5])
 
 
 class ReviewsDetailView(View):
 
     def get(self, request, slug):
-        review = Review.objects.get(slug=slug)
-        context = {"review": review}
-        return render(request, 'main/review.html', context)
+        try:
+            review = Review.objects.get(slug=slug)
+            context = {"review": review}
+            return render(request, 'main/review.html', context)
+        except:
+            raise Http404
 
 
 class UserDetailView(View):
 
     def get(self, request, pk):
-        user = User.objects.get(id=pk)
-        reviews = Review.objects.filter(author_id=pk)
-        context = {"user": user, "reviews": reviews}
-        return render(request, 'main/user.html', context)
+        try:
+            reviews = Review.objects.select_related('author').filter(author_id=pk)
+            context = {"reviews": reviews}
+            Account.objects.get(user_id=pk)
+            return render(request, 'main/user.html', context)
+        except:
+            raise Http404
