@@ -14,7 +14,7 @@
             {% csrf_token %}
             <p>Author: <a href="/users/{{ review.author.user.id }}">{{ review.author }}</a>, created on {{ review.create_date }}</p>
             <p>Total likes: {{ review.fans.count }}</p>
-            <p style="font-size: 40px;">{{ review.text }}</p>
+            <p style="font-size: 40px; margin-left: 15%; margin-right: 15%;">{{ review.text }}</p>
             {% if request.user.is_authenticated %}
                 {% if request.user.username != review.author.user.username %}
                 <div style="padding-left: 35%; padding-right: 35%;">

@@ -6,10 +6,9 @@
 
 {% block header-right %}
     {% if request.user.is_authenticated %}
-        <span>Hello, {{request.user}}! </span>
-        <span><a href="{% url 'logout' %}">Logout</a></span>
-    {% else %}
-        <span><a href="{% url 'login' %}">Login</a></span>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
+        <li><a href="{% url 'create' %}" class="nav-link px-2 text-white">Create Review</a></li>
+        </ul>
     {% endif %}
 {% endblock %}
 
@@ -22,11 +21,6 @@
                 {% for review in liked_reviews %}
                     <p><a href="/reviews/{{ review.slug }}">{{review.title}}</a> - {{review.fans.count}} Likes</p>
                 {% endfor %}
-            </th>
-            <th>
-                {% if request.user.is_authenticated %}
-                    <a href="{% url 'create' %}">Add review</a>
-                {% endif %}
             </th>
             <th>
                 <p>All Reviews:</p>

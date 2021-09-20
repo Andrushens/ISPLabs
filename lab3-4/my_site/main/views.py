@@ -39,6 +39,7 @@ def signup_page(request):
             p.join()
             form.save()
             return redirect('login')
+        messages.error(request, 'Incorrect login or password')
 
     form = SignupForm()
     context = {'form': form}
@@ -64,12 +65,14 @@ def login_page(request):
         messages.error(request, 'Incorrect login or password')
     return render(request, 'main/login.html', {})
 
+
 def logout_page(request):
     p = Process(target=log.info, args=("{} logged out".format(request.user.username),))
     p.start()
     p.join()
     logout(request)
     return redirect('login')
+
 
 @login_required(login_url='login')
 def create_page(request):
@@ -96,6 +99,7 @@ def create_page(request):
     form = CreateReviewForm()
     context = {'form': form}
     return render(request, 'main/create.html', context)
+
 
 @login_required(login_url='login')
 def delete_page(request, slug):
