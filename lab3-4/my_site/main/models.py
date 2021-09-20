@@ -8,12 +8,12 @@ class Account(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     reviews_created = models.IntegerField(default=0)
-
+    
     class Meta:
         indexes= [
             models.Index(fields=['user']),
         ]
-        
+     
     def __str__(self):
         return self.user.username
 

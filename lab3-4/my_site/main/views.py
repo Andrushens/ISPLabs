@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.base import View
 from .forms import CreateReviewForm, SignupForm, UpdateReviewForm
 
-from multiprocessing import Process
+from threading import Thread
 import logging
 import configparser
 
@@ -34,9 +34,8 @@ def signup_page(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            p = Process(target=log.info, args=("{} registered".format(form.cleaned_data['username']),))
+            p = Thread(target=log.info, args=("{} registered".format(form.cleaned_data['username']),))
             p.start()
-            p.join()
             form.save()
             return redirect('login')
         messages.error(request, 'Incorrect login or password')
@@ -57,9 +56,8 @@ def login_page(request):
         if user is not None:
             if (Account.objects.filter(user=user)).count() == 0:
                 Account.objects.create(user=user)
-            p = Process(target=log.info, args=("{} logged in".format(username),))
+            p = Thread(target=log.info, args=("{} logged in".format(username),))
             p.start()
-            p.join()
             login(request, user)
             return redirect('home')
         messages.error(request, 'Incorrect login or password')
@@ -67,9 +65,8 @@ def login_page(request):
 
 
 def logout_page(request):
-    p = Process(target=log.info, args=("{} logged out".format(request.user.username),))
+    p = Thread(target=log.info, args=("{} logged out".format(request.user.username),))
     p.start()
-    p.join()
     logout(request)
     return redirect('login')
 
@@ -84,17 +81,15 @@ def create_page(request):
             review.author.reviews_created += 1
             review.author.save()
             review.save()
-            p = Process(target=log.info, args=("{} created review {}".format(request.user.username, review.title),))
+            p = Thread(target=log.info, args=("{} created review {}".format(request.user.username, review.title),))
             p.start()
-            p.join()
             return redirect('home')
         if Review.objects.filter(title=request.POST['title']).count() == 1:
             messages.error(request, 'Review {} already exists'.format(request.POST['title']))
         else:   
             messages.error(request, 'Incorrect Input')
-        p = Process(target=log.error, args=("{} caused error on creating review".format(request.user.username),))
+        p = Thread(target=log.error, args=("{} caused error on creating review".format(request.user.username),))
         p.start()
-        p.join()
 
     form = CreateReviewForm()
     context = {'form': form}
@@ -109,9 +104,8 @@ def delete_page(request, slug):
     review.author.reviews_created -= 1
     review.author.save()
     review.delete()
-    p = Process(target=log.info, args=("{} deleted review {}".format(request.user.username, slug),))
+    p = Thread(target=log.info, args=("{} deleted review {}".format(request.user.username, slug),))
     p.start()
-    p.join()
     return redirect('home')
 
 
@@ -126,18 +120,16 @@ def update_page(request, slug):
         if form.is_valid() and Review.objects.filter(title=request.POST['title']).count() == 0:
             review = form.save(commit=False)
             review.save()
-            p = Process(target=log.info, args=("{} edited review {}".format(request.user.username, review.title),))
+            p = Thread(target=log.info, args=("{} edited review {}".format(request.user.username, review.title),))
             p.start()
-            p.join()
             return redirect('home')
         if Review.objects.filter(title=request.POST['title']).count() == 1:
             messages.error(request, 'Review {} already exists'.format(request.POST['title']))
         else:   
             messages.error(request, 'Incorrect Input')
-        p = Process(target=log.error, args=("{} caused error on updating review".format(request.user.username),))
+        p = Thread(target=log.error, args=("{} caused error on updating review".format(request.user.username),))
         p.start()
-        p.join()
-                    
+
     context = {'review': review}
     return render(request, 'main/update.html', context)
 
@@ -151,14 +143,13 @@ def like_review(request, slug):
     if review.fans.filter(username=request.user.username).count() == 0:
         review.fans.add(request.user)
         review.likes += 1
-        p = Process(target=log.info, args=("{} liked review {}".format(request.user.username, slug),))
+        p = Thread(target=log.info, args=("{} liked review {}".format(request.user.username, slug),))
     else:
         review.fans.remove(request.user)
         review.likes -= 1
-        p = Process(target=log.info, args=("{} disliked review {}".format(request.user.username, slug),))
+        p = Thread(target=log.info, args=("{} disliked review {}".format(request.user.username, slug),))
     review.save()
     p.start()
-    p.join()
 
     return redirect(request.path[:-5])
 

@@ -1,0 +1,6 @@
+INFO:main.views:root logged out
+INFO:main.views:root logged in
+INFO:main.views:root liked review qwe
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
