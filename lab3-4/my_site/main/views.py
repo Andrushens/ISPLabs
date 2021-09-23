@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.template.defaultfilters import slugify
 from django.views.generic.base import View
 from .forms import CreateReviewForm, SignupForm, UpdateReviewForm
 
@@ -75,18 +76,25 @@ def logout_page(request):
 def create_page(request):
     if request.method == 'POST':
         form = CreateReviewForm(request.POST)
-        if form.is_valid() and Review.objects.filter(title=request.POST['title']).count() == 0:
-            review = form.save(commit=False)
-            review.author = Account.objects.filter(user_id=request.user.id).first()
-            review.author.reviews_created += 1
-            review.author.save()
-            review.save()
-            p = Thread(target=log.info, args=("{} created review {}".format(request.user.username, review.title),))
-            p.start()
-            return redirect('home')
-        if Review.objects.filter(title=request.POST['title']).count() == 1:
-            messages.error(request, 'Review {} already exists'.format(request.POST['title']))
+        print(form)
+        if form.is_valid():
+            slug = slugify(form.cleaned_data['title'])
+            if Review.objects.filter(slug=slug).count() == 0:
+                review = form.save(commit=False)
+                try:
+                    review.author = Account.objects.filter(user_id=request.user.id).first()
+                    review.author.reviews_created += 1
+                    review.author.save()
+                    review.save()
+                    p = Thread(target=log.info, args=("{} created review {}".format(request.user.username, review.title),))
+                    p.start()
+                    return redirect('home')
+                except:
+                    pass
+            if Review.objects.filter(slug=slug).count() != 0:
+                messages.error(request, 'Review {} already exists'.format(request.POST['title']))
         else:   
+            print('*******************')
             messages.error(request, 'Incorrect Input')
         p = Thread(target=log.error, args=("{} caused error on creating review".format(request.user.username),))
         p.start()
@@ -115,16 +123,22 @@ def update_page(request, slug):
         return redirect(request.path[:-7])
 
     review = Review.objects.filter(slug=slug).get()
+
     if request.method == 'POST':
         form = UpdateReviewForm(request.POST, instance=review)
-        if form.is_valid() and Review.objects.filter(title=request.POST['title']).count() == 0:
-            review = form.save(commit=False)
-            review.save()
-            p = Thread(target=log.info, args=("{} edited review {}".format(request.user.username, review.title),))
-            p.start()
-            return redirect('home')
-        if Review.objects.filter(title=request.POST['title']).count() == 1:
-            messages.error(request, 'Review {} already exists'.format(request.POST['title']))
+        if form.is_valid():
+            slug = slugify(form.cleaned_data['title'])
+            if Review.objects.filter(slug=slug).count() == 0 or Review.objects.get(slug=slug).author.user == request.user:
+                review = form.save(commit=False)
+                try:
+                    review.save()
+                    p = Thread(target=log.info, args=("{} edited review {}".format(request.user.username, review.title),))
+                    p.start()
+                    return redirect('home')
+                except:
+                    pass
+        if Review.objects.filter(slug=slug).count() == 1:
+            messages.error(request, 'Review {} already exists'.format(request.POST['title'].lower()))
         else:   
             messages.error(request, 'Incorrect Input')
         p = Thread(target=log.error, args=("{} caused error on updating review".format(request.user.username),))

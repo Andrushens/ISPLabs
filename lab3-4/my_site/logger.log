@@ -4,3 +4,1082 @@ INFO:main.views:root liked review qwe
 INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
 DEBUG:asyncio:Using selector: EpollSelector
 DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:qwe logged in
+INFO:main.views:qwe created review фыв
+WARNING:django.request:Not Found: /reviews/
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q registered
+INFO:main.views:q logged in
+ERROR:main.views:q caused error on creating review
+INFO:main.views:q created review w
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q liked review qwe
+INFO:main.views:q edited review w
+INFO:main.views:q edited review w
+ERROR:django.request:Internal Server Error: /reviews/w/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 121, in update_page
+    review = form.save(commit=False)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/forms/models.py", line 460, in save
+    raise ValueError(
+ValueError: The Review could not be changed because the data didn't validate.
+INFO:main.views:q edited review w
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 83, in create_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 906, in _do_insert
+    return manager._insert(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 83, in create_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 906, in _do_insert
+    return manager._insert(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 83, in create_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 906, in _do_insert
+    return manager._insert(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+ERROR:main.views:q caused error on updating review
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 83, in create_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 906, in _do_insert
+    return manager._insert(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review w
+INFO:main.views:q created review zxc
+INFO:main.views:q edited review zxc
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+INFO:main.views:q edited review qwew
+INFO:main.views:q edited review qwew
+INFO:main.views:q edited review qwew
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+INFO:main.views:q edited review qweW
+INFO:main.views:q edited review qWeW
+ERROR:django.request:Internal Server Error: /reviews/qwew/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 124, in update_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 845, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 899, in _do_update
+    return filtered._update(values) > 0
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 802, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1559, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 124, in update_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 845, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 899, in _do_update
+    return filtered._update(values) > 0
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 802, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1559, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+ERROR:django.request:Internal Server Error: /reviews/qwew/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 124, in update_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 845, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 899, in _do_update
+    return filtered._update(values) > 0
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 802, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1559, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 124, in update_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 845, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 899, in _do_update
+    return filtered._update(values) > 0
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 802, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1559, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 124, in update_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 845, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 899, in _do_update
+    return filtered._update(values) > 0
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 802, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1559, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+INFO:main.views:q edited review qWeW
+INFO:main.views:q edited review qWEW
+ERROR:main.views:q caused error on updating review
+ERROR:django.request:Internal Server Error: /reviews/qwew/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 124, in update_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 845, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 899, in _do_update
+    return filtered._update(values) > 0
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 802, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1559, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 125, in update_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 845, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 899, in _do_update
+    return filtered._update(values) > 0
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 802, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1559, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWEW
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWEW
+INFO:main.views:q edited review qWEW12
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWEW12
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew12/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 120, in update_page
+    print('*******************',form.cleaned_data['title'])
+AttributeError: 'UpdateReviewForm' object has no attribute 'cleaned_data'
+ERROR:django.request:Internal Server Error: /reviews/qwew12/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 120, in update_page
+    print('*******************',form.cleaned_data['title'])
+AttributeError: 'UpdateReviewForm' object has no attribute 'cleaned_data'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew12/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 120, in update_page
+    print('*******************',form.title)
+AttributeError: 'UpdateReviewForm' object has no attribute 'title'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWEW1
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew1/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 120, in update_page
+    print('*******************',form.cleaned_data)
+AttributeError: 'UpdateReviewForm' object has no attribute 'cleaned_data'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew1/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 120, in update_page
+    print('*******************',form.title)
+AttributeError: 'UpdateReviewForm' object has no attribute 'title'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew1/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 121, in update_page
+    if form.is_valid():
+AttributeError: 'Review' object has no attribute 'is_valid'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew1/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 121, in update_page
+    if form.is_valid():
+AttributeError: 'Review' object has no attribute 'is_valid'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWEW1
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /reviews/qwew1/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 123, in update_page
+    title = form.cleaned_data['slug']
+KeyError: 'slug'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWEW1
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWEW1
+INFO:main.views:q edited review qWew1
+ERROR:main.views:q caused error on updating review
+ERROR:django.request:Internal Server Error: /reviews/qwew1/update
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 127, in update_page
+    review.save()
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/models.py", line 46, in save
+    super(Review, self).save(*args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 845, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/base.py", line 899, in _do_update
+    return filtered._update(values) > 0
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/query.py", line 802, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1559, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "main_review_slug_key"
+DETAIL:  Key (slug)=(w) already exists.
+
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review W
+INFO:main.views:q edited review qWew1
+INFO:main.views:q edited review qWEW1
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWew1
+ERROR:main.views:q caused error on updating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWeW1
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qWeW1
+INFO:main.views:q edited review qWEW1
+ERROR:main.views:q caused error on updating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q edited review qwew1
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on updating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+INFO:main.views:q edited review qwew1
+INFO:main.views:q edited review qwEW1
+INFO:main.views:q edited review qwEW1
+INFO:main.views:q edited review qwEW1
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q created review wqwq
+INFO:main.views:q created review eweweweq
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q created review ewqeqweqw
+ERROR:main.views:q caused error on creating review
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 92, in create_page
+    if Review.objects.filter(slug=slug).count() == 1:
+UnboundLocalError: local variable 'slug' referenced before assignment
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 92, in create_page
+    if Review.objects.filter(slug=slug).count() == 1:
+UnboundLocalError: local variable 'slug' referenced before assignment
+ERROR:main.views:q caused error on creating review
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 92, in create_page
+    if Review.objects.filter(slug=slug).count() == 1:
+UnboundLocalError: local variable 'slug' referenced before assignment
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 79, in create_page
+    slug = slugify(form.cleaned_data['title'])
+AttributeError: 'CreateReviewForm' object has no attribute 'cleaned_data'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 79, in create_page
+    slug = slugify(form.cleaned_data['title'])
+AttributeError: 'CreateReviewForm' object has no attribute 'cleaned_data'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 93, in create_page
+    if Review.objects.filter(slug=slug).count() == 1:
+UnboundLocalError: local variable 'slug' referenced before assignment
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py", line 93, in create_page
+    if Review.objects.filter(slug=slug).count() == 1:
+UnboundLocalError: local variable 'slug' referenced before assignment
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/forms.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+INFO:main.views:q edited review wqWq
+INFO:main.views:q edited review wqW
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on updating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /create
+Traceback (most recent call last):
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/andrushens/anime/ISPLabs/lab3-4/my_site/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+TypeError: create_page() missing 1 required positional argument: 'slug'
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:main.views:q created review wwww
+INFO:main.views:q edited review wWWw
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+INFO:django.utils.autoreload:/home/andrushens/anime/ISPLabs/lab3-4/my_site/main/forms.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+INFO:main.views:q created review ww
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review
+ERROR:main.views:q caused error on creating review

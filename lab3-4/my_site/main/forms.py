@@ -19,7 +19,6 @@ class CreateReviewForm(forms.ModelForm):
 
     def is_valid(self):
         valid = super().is_valid()
-
         if not valid:
             return valid
 
@@ -36,7 +35,6 @@ class UpdateReviewForm(forms.ModelForm):
 
     def is_valid(self):
         valid = super().is_valid()
-
         if not valid:
             return valid
 

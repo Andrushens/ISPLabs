@@ -8,7 +8,7 @@ class Account(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     reviews_created = models.IntegerField(default=0)
-    
+
     class Meta:
         indexes= [
             models.Index(fields=['user']),
@@ -27,7 +27,7 @@ class Review(models.Model):
     fans = models.ManyToManyField(User, related_name='fans')
     likes = models.IntegerField(default=0)
     text = models.TextField(max_length=1000)
-    title = models.CharField(max_length=25)
+    title = models.CharField(max_length=25, unique=True)
     create_date = models.DateTimeField(default=datetime.now)    
     slug = models.SlugField(max_length=25, unique=True)
 
@@ -37,10 +37,10 @@ class Review(models.Model):
             models.Index(fields=['slug']),
             models.Index(fields=['author_id']),
         ]
-        
+
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = slugify(self.title.lower())
         super(Review, self).save(*args, **kwargs)

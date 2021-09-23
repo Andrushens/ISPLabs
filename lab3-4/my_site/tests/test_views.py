@@ -49,9 +49,11 @@ def test_login(client, user):
     assert client.login(username=user.username, password="123qwe456rty")
 
 @pytest.mark.django_db
-def test_detail_user(client, user):
-    resp_get = client.get("/users/{}".format(user.id))
+def test_detail_user(client, user, account):
+    resp_get = client.get(f"/users/{user.id}")
     assert resp_get.status_code == 200
+    resp_get = client.get(f"/users/{user.id+1}")
+    assert resp_get.status_code == 404
 
 @pytest.mark.django_db
 def test_create_review(client, user, account):
@@ -85,6 +87,8 @@ def test_like_post(client, user, user2, review, account):
     resp_post = client.post("/reviews/" + review.slug + "/like", {"slug": review.slug})
     assert resp_post.status_code == 302
     assert Review.objects.filter(author=account).first().fans.count() == 1
+    resp_post = client.post("/reviews/" + review.slug + "/like", {"slug": review.slug})
+    assert Review.objects.filter(author=account).first().fans.count() == 0
 
 @pytest.mark.django_db
 def test_update_post(client, user, user2, review, account):
